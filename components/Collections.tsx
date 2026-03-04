@@ -5,12 +5,36 @@ import { motion, cubicBezier } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const collections = [
-  { title: "Miles", img: "/images/miles.jpg" },
-  { title: "Korty in a car", img: "/images/korty-car.jpg" },
-  { title: "Korty black and white", img: "/images/kory-black-and-white.jpg" },
-  { title: "Cute girl", img: "/images/cute-girl.jpg" },
-  { title: "Korty Couch", img: "/images/korty-couch.jpg" },
-  { title: "Korty", img: "/images/korty.jpg" },
+  {
+    title:
+      "High fashion woman in cream knit crop sweater and floral maxi skirt",
+    img: "/images/high-fashion-woman-in-cream-knit-crop-sweater-and-floral-maxi-skirt.webp",
+  },
+  {
+    title:
+      "Cheerful senior black man riding vintage bicycle on beach boardwalk with palm trees",
+    img: "/images/cheerful-senior-black-man-riding-vintage-bicycle-on-beach-boardwalk-with-palm-trees.webp",
+  },
+  {
+    title: "Hamburger on a checkered nylon on a blue background",
+    img: "/images/hamburger-on-a-checkered-nylon-on-a-blue-background.webp",
+  },
+  {
+    title:
+      "Black man in traditional african attire holding carved wooden staff studio",
+    img: "/images/black-man-in-traditional-african-attire-holding-carved-wooden-staff-studio.webp",
+  },
+  {
+    title: "A young black man sitting on a trashcan",
+    img: "/images/a-young-black-man-sitting-on-a-trashcan.webp",
+  },
+  {
+    title:
+      "Trendy black man sitting in orange chair using phone and making ok gesture",
+    img: "/images/trendy-black-man-sitting-in-orange-chair-using-phone-and-making-ok-gesture.webp",
+  },
+
+  { title: "Little female child", img: "/images/little-female-child.webp" },
 ];
 
 const ease = cubicBezier(0.22, 1, 0.36, 1);

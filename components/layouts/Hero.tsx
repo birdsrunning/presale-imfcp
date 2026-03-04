@@ -52,7 +52,9 @@ export default function Hero({
             className="text-4xl font-bold leading-tight md:text-6xl"
           >
             Unlock Unlimited Creativity. <br />
-            <span className="text-brand-orange">500 images just for you.</span>
+            <span className="text-brand-orange">500 images.</span>
+            <br />
+            <span className="text-brand-orange">Just for you.</span>
             <br /> Forever.
           </motion.h1>
 
@@ -103,7 +105,7 @@ export default function Hero({
           />
 
           <motion.img
-            src="/images/korty.jpg"
+            src="/images/cheerful-senior-black-man-riding-vintage-bicycle-on-beach-boardwalk-with-palm-trees.webp"
             alt="Featured AI portrait"
             className="relative rounded-3xl border border-brand-white/10"
             animate={{ y: [0, -6, 0] }}

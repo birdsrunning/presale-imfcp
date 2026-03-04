@@ -24,7 +24,7 @@ export default function Footer() {
       whileInView="show"
       viewport={{ once: true }}
     >
-      © 2026 Image for creatives. Built for creators.
+      © 2026 Image for creatives. Built for creatives.
     </motion.footer>
   );
 }

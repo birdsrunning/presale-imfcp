@@ -92,7 +92,7 @@ export default function Pricing({
                 Founders Offer
               </span>
               <h3 className="text-xl font-semibold text-white">
-                Lifetime Founders Pack
+                Creatives Founders Pack
               </h3>
             </motion.div>
 
