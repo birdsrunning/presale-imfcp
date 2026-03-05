@@ -2,16 +2,41 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { Playfair_Display } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import localFont from "next/font/local";
+
+const playfair = localFont({
+  src: [
+    {
+      path: "../public/fonts/playfair/PlayfairDisplayRegular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/playfair/PlayfairDisplayItalic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/playfair/PlayfairDisplayBold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-playfair",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "IMFC - AI Image Delivery for African Creatives",
@@ -43,16 +68,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={playfair.variable}>
       <head>
         {/* Optional: Canonical for SEO */}
         <link rel="canonical" href="https://presale.imageforcreatives.com" />
         {/* Favicon placeholder */}
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-brand-black text-brand-white`}
-      >
+      <body className={`font-playfair bg-brand-black text-brand-white`}>
         {children}
         <Toaster position="top-right" richColors closeButton />
       </body>

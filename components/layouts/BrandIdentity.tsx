@@ -39,7 +39,7 @@ const card = {
 
 export default function BrandStory() {
   return (
-    <section className="py-32 bg-brand-black">
+    <section className="py-32 bg-brand-black leading-loose">
       <motion.div
         className="mx-auto max-w-5xl px-6"
         variants={container}

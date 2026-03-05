@@ -18,7 +18,7 @@ import { formatNumber } from "@/utils/helpers";
 
 const PRODUCT = {
   name: "Early Pro Access",
-  price: 10_000,
+  price: 100,
 };
 
 const ease = cubicBezier(0.22, 1, 0.36, 1);
