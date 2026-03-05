@@ -15,6 +15,8 @@ import { EmailFormSchema, type EmailFormSchemaType } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, cubicBezier } from "framer-motion";
 import { formatNumber } from "@/utils/helpers";
+import { toastStyles } from "@/utils/toastConfig";
+import Link from "next/link";
 
 const PRODUCT = {
   name: "Early Pro Access",
@@ -68,7 +70,9 @@ export default function PresaleCheckoutPage({
         res.status === 409 &&
         data.error === "This email already has presale access"
       ) {
-        toast.error("This email has already purchased Early Pro Access.");
+        toast.error("This email has already purchased Early Pro Access.", {
+          style: toastStyles.error,
+        });
         return;
       }
 
@@ -84,12 +88,18 @@ export default function PresaleCheckoutPage({
         amount: PRODUCT.price * 100,
         reference: data.reference,
         onSuccess: () =>
-          toast.success("Payment received! Check your email for confirmation."),
-        onCancel: () => toast.message("Payment cancelled"),
+          toast.success(
+            "Payment received! Check your email for the confirmation (and your spam folder just in case).",
+            { style: toastStyles.success },
+          ),
+        onCancel: () =>
+          toast.message("Payment cancelled", { style: toastStyles.info }),
       });
     } catch (err) {
-      console.error("PRESALE_INIT_ERROR", err);
-      toast.error("Unable to start payment. Please try again.");
+      // console.error("PRESALE_INIT_ERROR", err);
+      toast.error("Unable to start payment. Please try again.", {
+        style: toastStyles.error,
+      });
     } finally {
       setLoading(false);
     }
@@ -105,9 +115,15 @@ export default function PresaleCheckoutPage({
         viewport={{ once: true }}
       >
         {/* Logo */}
-        <motion.div variants={fadeUp} className="flex justify-center">
-          <img src="/logo/logoOrange.svg" alt="Logo" className="h-12 w-auto" />
-        </motion.div>
+        <Link href="/">
+          <motion.div variants={fadeUp} className="flex justify-center">
+            <img
+              src="/logo/logoOrange.svg"
+              alt="Logo"
+              className="h-12 w-auto"
+            />
+          </motion.div>
+        </Link>
 
         {/* Headline */}
         <motion.h1
