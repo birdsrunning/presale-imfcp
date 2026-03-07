@@ -35,6 +35,14 @@ const collections = [
   },
 
   { title: "Little female child", img: "/images/little-female-child.webp" },
+  {
+    title: "Fashion black woman in black and white geometric knit set outdoors",
+    img: "/images/fashion-black-woman-in-black-and-white-geometric-knit-set-outdoors.webp",
+  },
+  {
+    title: "Stylish woman holding a phone",
+    img: "/images/stylish-woman-holding-a-phone.webp",
+  },
 ];
 
 const ease = cubicBezier(0.22, 1, 0.36, 1);
