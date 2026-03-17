@@ -10,14 +10,18 @@ export async function POST(req: Request) {
     // 1️⃣ Safely parse JSON
     const body = await req.json().catch(() => null);
 
-    const email = body?.email;
+    const email = body?.email?.toLowerCase().trim();
+    const attribution = {
+      source: body?.attribution?.source ?? "direct",
+      medium: body?.attribution?.medium ?? "unknown",
+      campaign: body?.attribution?.campaign ?? "presale",
+    };
 
     if (!email) {
-      return NextResponse.json(
-        { error: "Email is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
+
+    console.log("ATTRIBUTION SENT", attribution)
 
     // 2️⃣ Block duplicate purchases (email-level)
     const existing = await db.query.presaleTable.findFirst({
@@ -27,29 +31,27 @@ export async function POST(req: Request) {
     if (existing) {
       return NextResponse.json(
         { error: "This email already has presale access" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
     // 3️⃣ Initialize Paystack transaction
-    const res = await fetch(
-      "https://api.paystack.co/transaction/initialize",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
-          "Content-Type": "application/json",
+    const res = await fetch("https://api.paystack.co/transaction/initialize", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        amount: PRESALE_PRICE,
+        metadata: {
+          presale: true,
+          plan: "early-pro",
+          attribution: attribution,
         },
-        body: JSON.stringify({
-          email,
-          amount: PRESALE_PRICE,
-          metadata: {
-            presale: true,
-            plan: "early-pro",
-          },
-        }),
-      }
-    );
+      }),
+    });
 
     const data = await res.json();
 
@@ -58,7 +60,7 @@ export async function POST(req: Request) {
 
       return NextResponse.json(
         { error: "Paystack initialization failed" },
-        { status: 502 }
+        { status: 502 },
       );
     }
 
@@ -71,7 +73,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { error: "Unable to initialize presale payment" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

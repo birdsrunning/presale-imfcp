@@ -1,4 +1,5 @@
 CREATE TYPE "public"."presale_claim_status" AS ENUM('UNCLAIMED', 'CLAIMED');--> statement-breakpoint
+--> statement-breakpoint
 CREATE TABLE "presale" (
 	"id" text PRIMARY KEY NOT NULL,
 	"email" text NOT NULL,
@@ -6,6 +7,10 @@ CREATE TABLE "presale" (
 	"provider" text DEFAULT 'paystack' NOT NULL,
 	"amount" text NOT NULL,
 	"currency" text DEFAULT 'NGN' NOT NULL,
+	"source" text DEFAULT 'direct',
+	"medium" text DEFAULT 'unknown',
+	"campaign" text DEFAULT 'presale',
+	"content" text,
 	"plan" text NOT NULL,
 	"perks_snapshot" jsonb NOT NULL,
 	"claim_status" "presale_claim_status" DEFAULT 'UNCLAIMED' NOT NULL,
@@ -16,4 +21,6 @@ CREATE TABLE "presale" (
 );
 --> statement-breakpoint
 CREATE INDEX "presale_email_idx" ON "presale" USING btree ("email");--> statement-breakpoint
-CREATE INDEX "presale_claim_status_idx" ON "presale" USING btree ("claim_status");
+CREATE INDEX "presale_claim_status_idx" ON "presale" USING btree ("claim_status");--> statement-breakpoint
+CREATE INDEX "presale_source_idx" ON "presale" USING btree ("source");--> statement-breakpoint
+CREATE INDEX "presale_campaign_idx" ON "presale" USING btree ("campaign");

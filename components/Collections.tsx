@@ -95,7 +95,7 @@ export default function Collections() {
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-6 font-sans">
         {/* Header */}
         <motion.div
           variants={fadeUp}

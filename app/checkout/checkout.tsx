@@ -56,12 +56,18 @@ export default function PresaleCheckoutPage({
   const onSubmit = async (values: EmailFormSchemaType) => {
     if (loading) return;
 
+    const attribution = {
+      source: localStorage.getItem("utm_source"),
+      medium: localStorage.getItem("utm_medium"),
+      campaign: localStorage.getItem("utm_campaign"),
+    };
+
     try {
       setLoading(true);
       const res = await fetch("/api/presale/initialize", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: values.email }),
+        body: JSON.stringify({ email: values.email, attribution }),
       });
 
       const data = await res.json();
@@ -106,7 +112,7 @@ export default function PresaleCheckoutPage({
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-brand-black px-6">
+    <div className="min-h-screen font-sans flex items-center justify-center bg-brand-black px-6">
       <motion.div
         className="w-full max-w-sm space-y-8 bg-brand-black/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-white/10"
         variants={container}

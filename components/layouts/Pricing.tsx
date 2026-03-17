@@ -53,7 +53,7 @@ export default function Pricing({
   return (
     <section id="pricing" className="py-28">
       <motion.div
-        className="mx-auto max-w-3xl px-6 text-center"
+        className="font-sans mx-auto max-w-3xl px-6 text-center"
         variants={container}
         initial="hidden"
         whileInView="show"

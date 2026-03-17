@@ -36,7 +36,7 @@ export default function Hero({
   };
 }) {
   return (
-    <section className="relative pt-32 pb-24 overflow-hidden leading-snug">
+    <section className="font-playfair relative pt-32 pb-24 overflow-hidden leading-snug">
       <div className="mx-auto max-w-7xl px-6 grid gap-16 lg:grid-cols-2 items-center">
         {/* Copy */}
         <motion.div variants={container} initial="hidden" animate="show">

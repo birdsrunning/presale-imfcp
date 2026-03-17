@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { Playfair_Display } from "next/font/google";
+import AttributionTracker from "@/components/AttributeTracker";
 
 import localFont from "next/font/local";
 
@@ -28,15 +29,15 @@ const playfair = localFont({
   display: "swap",
 });
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "IMFC - AI Image Delivery for African Creatives",
@@ -75,7 +76,10 @@ export default function RootLayout({
         {/* Favicon placeholder */}
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`font-playfair bg-brand-black text-brand-white`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-brand-black text-brand-white`}
+      >
+        <AttributionTracker />
         {children}
         <Toaster position="top-right" richColors closeButton />
       </body>

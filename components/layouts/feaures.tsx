@@ -15,7 +15,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-24 border-t border-white/5">
+    <section className="font-sans py-24 border-t border-white/5">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="mb-12 text-center text-3xl font-bold">
           Why Creators Choose Us

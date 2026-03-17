@@ -1,13 +1,20 @@
 import crypto from "crypto";
 import { db } from "@/db";
-import { presaleTable } from "@/db/schema";
+import { presaleTable, newsletterSubscribers } from "@/db/schema";
 import { sendPresaleConfirmationEmail } from "@/lib/email/send-presale-confirmation";
+
+type Attribution = {
+  source?: string | null;
+  medium?: string | null;
+  campaign?: string | null;
+};
 
 type FinalizePresaleInput = {
   reference: string;
   email: string;
   amount: number; // kobo
   currency: string;
+  attribution?: Attribution;
 };
 
 type FinalizePresaleResult =
@@ -15,9 +22,17 @@ type FinalizePresaleResult =
   | { ok: false; error: string };
 
 export async function finalizePresalePayment(
-  input: FinalizePresaleInput
+  input: FinalizePresaleInput,
 ): Promise<FinalizePresaleResult> {
   const { reference, email, amount, currency } = input;
+
+  const source = input.attribution?.source ?? "direct";
+  const medium = input.attribution?.medium ?? "unknown";
+  const campaign = input.attribution?.campaign ?? "presale";
+
+  console.log(source);
+  console.log(medium);
+  console.log(campaign);
 
   try {
     const inserted = await db
@@ -31,6 +46,7 @@ export async function finalizePresalePayment(
         currency,
 
         plan: "early-pro",
+
         perksSnapshot: {
           tier: "premium",
           earlyAccess: true,
@@ -38,18 +54,21 @@ export async function finalizePresalePayment(
         },
 
         claimStatus: "UNCLAIMED",
+
+        // 📊 attribution tracking
+        source,
+        medium,
+        campaign,
       })
       .onConflictDoNothing({
         target: presaleTable.paymentReference,
       })
       .returning({ id: presaleTable.id });
 
-    // 🔁 Webhook retry → already handled
     if (inserted.length === 0) {
       return { ok: true, alreadyProcessed: true };
     }
 
-    // 📧 Confirmation email (non-fatal)
     try {
       await sendPresaleConfirmationEmail({
         email,
@@ -61,7 +80,6 @@ export async function finalizePresalePayment(
 
     return { ok: true, alreadyProcessed: false };
   } catch (err: any) {
-    // 🚫 Email already purchased (unique email constraint)
     if (err?.code === "23505") {
       return { ok: true, alreadyProcessed: true };
     }

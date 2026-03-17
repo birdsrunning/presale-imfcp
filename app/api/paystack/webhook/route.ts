@@ -22,7 +22,12 @@ export async function POST(req: Request) {
   }
 
   const data = event.data;
+
   const email = data.customer?.email;
+
+  const attribution = data.metadata?.attribution
+
+  console.log("PAYSTACK METADATA:", data.metadata);
 
   if (!email) {
     return new Response("Missing email", { status: 400 });
@@ -33,6 +38,7 @@ export async function POST(req: Request) {
     email,
     amount: data.amount,
     currency: data.currency,
+    attribution,
   });
 
   if (!result.ok) {
