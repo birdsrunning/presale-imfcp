@@ -1,25 +1,21 @@
-"use client";
+import { redirect } from "next/navigation";
+import AdminPage from "./admin-page";
+import AnalyticsPage from "./dashboard";
 
-export default function AdminPage() {
-  async function sendPresaleAnnouncement() {
-    try {
-      await fetch("/api/send-presale-announcement", {
-        method: "POST",
-      });
+export default async function page({
+  searchParams,
+}: {
+  searchParams: Promise<{ key?: string }>;
+}) {
+  const params = await searchParams;
 
-      alert("Newsletter sent 🚀");
-    } catch {
-      alert("Sending Newsletter failed... ");
-    }
+  if (params.key !== process.env.ADMIN_KEY) {
+    redirect("/");
   }
-
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Send Newsletter</h1>
-
-      <button onClick={sendPresaleAnnouncement}>
-        Send Pre-sale Announcement
-      </button>
-    </div>
+    <>
+      <AdminPage />
+      <AnalyticsPage />
+    </>
   );
 }

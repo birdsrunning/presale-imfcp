@@ -155,7 +155,7 @@ export default function Collections() {
                 variants={card}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3, ease }}
-                className="group relative min-w-[280px] h-[360px]
+                className="group relative min-w-[280px] sm:min-w-[336px] h-[360px] sm:h-[420px]
                            overflow-hidden rounded-2xl
                            border border-brand-white/20"
               >

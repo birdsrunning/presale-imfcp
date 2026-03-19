@@ -110,7 +110,7 @@ export default function Pricing({
             {/* Description */}
             <motion.p
               variants={fadeUp}
-              className="text-sm text-brand-white/80 max-w-md mb-6"
+              className="text-sm text-brand-white/80 max-w-md mb-6 mx-auto"
             >
               Built for professionals who need speed, quality, and scale — pay
               once, use forever.

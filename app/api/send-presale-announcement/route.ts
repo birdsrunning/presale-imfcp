@@ -1,19 +1,45 @@
 import { resend } from "@/lib/resend";
 import { db } from "@/db";
-import { newsletterSubscribers, presaleTable } from "@/db/schema";
+import { newsletterSubscribers, presaleTable, dummy } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function POST() {
   try {
     // The real deal
-    // const subscribers = await db
-    //   .select()
+    // const subscribers = await db.select().from(dummy);
+    // // adjust path if needed
+
+    // async function seedDummy() {
+    //   console.log("🌱 Seeding dummy table...");
+
+    //   try {
+    //     await db
+    //       .insert(dummy)
+    //       .values(
+    //         emails.map((email, index) => ({
+    //           name: `User ${index + 1}`,
+    //           email,
+    //         })),
+    //       )
+    //       .onConflictDoNothing(); // 👈 avoids crashing on duplicates
+
+    //     console.log("✅ Dummy data inserted");
+    //   } catch (err) {
+    //     console.error("❌ Seeding failed:", err);
+    //   } finally {
+    //     process.exit(0);
+    //   }
+    // }
+
+    // seedDummy();
     //   .from(newsletterSubscribers)
 
     // for testing purposes
-    const subscribers = await db.select().from(presaleTable);
+    const subscribers = await db.select().from(dummy);
 
     const emails = subscribers.map((s) => s.email);
+
+    console.log(emails);
 
     const batchSize = 50;
 
@@ -21,7 +47,7 @@ export async function POST() {
       const batch = emails.slice(i, i + batchSize);
 
       await resend.emails.send({
-        from: process.env.FROM_EMAIL!,
+        from: process.env.RESEND_FROM_EMAIL!,
         to: batch,
         subject: "🚀 Early Access is Live — You're Invited",
         html: `
@@ -41,7 +67,7 @@ export async function POST() {
     <div style="margin:30px 0;">
 
       <a 
-        href="https://yourdomain.com"
+        href="https://presale.imageforcreatives.com"
         style="
           background:#111;
           color:#fff;
@@ -73,7 +99,7 @@ export async function POST() {
       ImageFlow<br/>
       Lagos, Nigeria
       <br/><br/>
-      <a href="https://yourdomain.com/unsubscribe" style="color:#666;">
+      <a href="https://presale.imageforcreatives.com/unsubscribe" style="color:#666;">
         Unsubscribe
       </a>
     </p>
@@ -86,12 +112,15 @@ export async function POST() {
     return Response.json({
       success: true,
       sent: emails.length,
+      message: "Emails sent successfully.",
     });
   } catch (error) {
     console.error(error);
 
     return Response.json({
-      error: "Failed to send emails",
+      success: false,
+      sent: null,
+      message: "Emails failed to send.",
     });
   }
 }

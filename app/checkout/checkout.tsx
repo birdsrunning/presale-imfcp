@@ -20,7 +20,7 @@ import Link from "next/link";
 
 const PRODUCT = {
   name: "Early Pro Access",
-  price: 100,
+  price: 10000,
 };
 
 const ease = cubicBezier(0.22, 1, 0.36, 1);
@@ -199,7 +199,9 @@ export default function PresaleCheckoutPage({
               ) : (
                 <>
                   <Lock className="mr-2 h-4 w-4" />
-                  Pay ₦{PRODUCT.price.toLocaleString()}
+                  Pay{' '}
+                  {pricing.symbol}
+                  {formatNumber(pricing.amount)}
                 </>
               )}
             </Button>
@@ -209,3 +211,5 @@ export default function PresaleCheckoutPage({
     </div>
   );
 }
+
+// ₦{PRODUCT.price.toLocaleString()}
