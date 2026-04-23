@@ -11,11 +11,6 @@ const collections = [
     img: "/images/high-fashion-woman-in-cream-knit-crop-sweater-and-floral-maxi-skirt.webp",
   },
   {
-    title:
-      "Cheerful senior black man riding vintage bicycle on beach boardwalk with palm trees",
-    img: "/images/cheerful-senior-black-man-riding-vintage-bicycle-on-beach-boardwalk-with-palm-trees.webp",
-  },
-  {
     title: "Hamburger on a checkered nylon on a blue background",
     img: "/images/hamburger-on-a-checkered-nylon-on-a-blue-background.webp",
   },
@@ -102,7 +97,7 @@ export default function Collections() {
           className="flex items-center justify-between mb-8"
         >
           <div>
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-3xl font-bold text-white font-playfair">
               Explore a universe of precision-crafted visuals.
             </h2>
             <p className="text-sm text-brand-white/70 mt-1">

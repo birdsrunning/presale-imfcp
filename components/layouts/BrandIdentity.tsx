@@ -56,7 +56,7 @@ export default function BrandStory() {
 
         <motion.h2
           variants={fadeUp}
-          className="mt-4 text-3xl md:text-4xl font-bold text-white max-w-3xl"
+          className="mt-4 text-3xl md:text-4xl font-bold text-white max-w-3xl font-playfair"
         >
           Built for creators who want great images — without friction.
         </motion.h2>
@@ -115,7 +115,7 @@ export default function BrandStory() {
               className="rounded-2xl border border-white/10
                          bg-brand-black p-6"
             >
-              <h3 className="text-white font-semibold mb-2">{item.title}</h3>
+              <h3 className="text-white font-semibold mb-2 font-playfair">{item.title}</h3>
               <p className="text-sm text-white/70 leading-relaxed">
                 {item.desc}
               </p>

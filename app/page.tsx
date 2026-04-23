@@ -4,6 +4,7 @@ import Footer from "@/components/layouts/Footer";
 import BrandStory from "@/components/layouts/BrandIdentity";
 import PricingSection from "@/components/layouts/PricingSection";
 import HeroSection from "@/components/layouts/HeroSection";
+import FAQ from "@/components/FAQSECTION";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Collections />
         <BrandStory />
         <PricingSection />
+        <FAQ />
       </main>
       <Footer />
     </>

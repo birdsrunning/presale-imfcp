@@ -77,7 +77,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-brand-black text-brand-white`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-brand-black text-brand-white max-w-[1440px] mx-auto`}
       >
         <AttributionTracker />
         {children}

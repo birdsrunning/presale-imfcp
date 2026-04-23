@@ -61,7 +61,7 @@ export default function Pricing({
       >
         <motion.h2
           variants={fadeUp}
-          className="text-4xl font-bold mb-6 text-white"
+          className="text-4xl font-bold mb-6 text-white font-playfair"
         >
           Simple. Honest. One-Time Pricing.
         </motion.h2>
@@ -88,10 +88,10 @@ export default function Pricing({
 
             {/* Header */}
             <motion.div variants={fadeUp} className="flex flex-col gap-1 mb-6">
-              <span className="text-xs uppercase tracking-widest text-brand-white/70">
+              <span className="text-xs font-playfair uppercase tracking-widest text-brand-white/70">
                 Founders Offer
               </span>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-white font-playfair">
                 Creatives Founders Pack
               </h3>
             </motion.div>

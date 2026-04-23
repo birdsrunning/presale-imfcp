@@ -98,8 +98,14 @@ export default function PresaleCheckoutPage({
             "Payment received! Check your email for the confirmation (and your spam folder just in case).",
             { style: toastStyles.success },
           ),
-        onCancel: () =>
-          toast.message("Payment cancelled", { style: toastStyles.info }),
+        onCancel: async () => {
+          toast.message("Payment cancelled", { style: toastStyles.info });
+          await fetch("/api/send-mail-on-cancel", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: values.email }),
+          });
+        },
       });
     } catch (err) {
       // console.error("PRESALE_INIT_ERROR", err);
@@ -134,7 +140,7 @@ export default function PresaleCheckoutPage({
         {/* Headline */}
         <motion.h1
           variants={fadeUp}
-          className="text-2xl font-semibold text-white text-center"
+          className="text-2xl font-semibold text-white text-center font-playfair"
         >
           Early Pro Access
         </motion.h1>
@@ -199,8 +205,7 @@ export default function PresaleCheckoutPage({
               ) : (
                 <>
                   <Lock className="mr-2 h-4 w-4" />
-                  Pay{' '}
-                  {pricing.symbol}
+                  Pay {pricing.symbol}
                   {formatNumber(pricing.amount)}
                 </>
               )}
