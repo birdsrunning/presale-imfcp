@@ -19,7 +19,7 @@ import { useState, useEffect, useCallback } from "react";
 
 // Set your universal launch date here (ISO 8601 format)
 // Example: "2026-05-05T00:00:00Z" for May 5th, 2026 UTC
-const TARGET_DATE = "2026-05-05T00:00:00Z";
+const TARGET_DATE = "2026-05-05T23:59:59Z";
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState({
