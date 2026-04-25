@@ -84,6 +84,7 @@ export default function Collections() {
 
   return (
     <motion.section
+      id="catalog"
       className="py-28"
       variants={container}
       initial="hidden"

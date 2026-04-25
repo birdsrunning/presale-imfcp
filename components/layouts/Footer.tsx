@@ -77,7 +77,7 @@ export default function Footer() {
           {/* Quick Links */}
           <nav className="flex gap-8 text-[11px] uppercase tracking-widest font-medium text-brand-white/60">
             <a href="#pricing" className="hover:text-brand-orange transition-colors">Pricing</a>
-            <a href="mailto:support@imfc.com" className="hover:text-brand-orange transition-colors">Contact</a>
+            <a href="#catalog" className="hover:text-brand-orange transition-colors">Catalog</a>
           </nav>
         </div>
 
