@@ -15,7 +15,7 @@ export async function getPricing(): Promise<Pricing> {
   if (country === "NG") {
     return {
       currency: "NGN",
-      amount: 10000,
+      amount: 100,
       symbol: "₦",
     };
   }

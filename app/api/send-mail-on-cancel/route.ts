@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     if (!email) {
       return Response.json(
         { success: false, message: "Email is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -88,8 +88,7 @@ export async function POST(req: Request) {
           <hr style="margin:40px 0; border:none; border-top:1px solid rgba(255,255,255,0.08);" />
 
           <p style="font-size:12px; color:rgba(255,255,255,0.4);">
-            ImageFlow<br/>
-            Lagos, Nigeria
+            IMFC
           </p>
 
         </div>
@@ -109,7 +108,7 @@ export async function POST(req: Request) {
         success: false,
         message: "Failed to send email",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

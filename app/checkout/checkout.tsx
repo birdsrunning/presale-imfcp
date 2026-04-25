@@ -20,7 +20,7 @@ import Link from "next/link";
 
 const PRODUCT = {
   name: "Early Pro Access",
-  price: 10000,
+  price: 100, // changed this money 100
 };
 
 const ease = cubicBezier(0.22, 1, 0.36, 1);

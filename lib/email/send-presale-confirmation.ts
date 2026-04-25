@@ -92,7 +92,8 @@ export async function sendPresaleConfirmationEmail({
   email,
   reference,
 }: SendPresaleEmailInput) {
-  const guideLink = "#"; // replace
+  const guideLink =
+    "https://presale.imageforcreatives.com/prompt-like-a-pro.pdf"; // replace
   const launchDate = "May 10";
 
   await resend.emails.send({
@@ -130,13 +131,9 @@ export async function sendPresaleConfirmationEmail({
             We’re putting the final touches on the collection.
           </p>
 
-          <p style="color:rgba(255,255,255,0.7);">
-            You’ll receive your <strong style="color:#fff;">secure download link</strong> on 
-            <strong style="color:#fff;">${launchDate}</strong>.
-          </p>
-
           <div style="margin:30px 0;">
-            <a href="${guideLink}" style="
+            <a href="${guideLink}"
+            target="_blank" style="
               display:inline-block;
               padding:14px 22px;
               background:#FF6A00;

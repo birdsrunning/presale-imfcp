@@ -3,7 +3,7 @@ import { db } from "@/db";
 import { presaleTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
-const PRESALE_PRICE = 10000 * 100; // kobo
+const PRESALE_PRICE = 100 * 100; // kobo
 
 export async function POST(req: Request) {
   try {
