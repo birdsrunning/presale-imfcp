@@ -94,7 +94,7 @@ export async function sendPresaleConfirmationEmail({
 }: SendPresaleEmailInput) {
   const guideLink =
     "https://presale.imageforcreatives.com/prompt-like-a-pro.pdf"; // replace
-  const launchDate = "May 10";
+  const launchDate = "May 5";
 
   await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL!,
