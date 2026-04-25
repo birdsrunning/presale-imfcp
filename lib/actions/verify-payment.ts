@@ -2,7 +2,7 @@
 
 import { finalizePresalePayment } from "../payment/finalize-payment";
 
-const PRESALE_PRICE = 100 * 100 //10_000 * 100; // kobo
+const PRESALE_PRICE = 10_000 * 100; // kobo
 
 export async function verifyPresalePayment(reference: string) {
   // 1️⃣ Verify with Paystack
