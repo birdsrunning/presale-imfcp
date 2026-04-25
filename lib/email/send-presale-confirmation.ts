@@ -101,77 +101,47 @@ export async function sendPresaleConfirmationEmail({
     to: email,
     subject: "You’re in. Welcome to the future of your workflow.",
     html: `
-      <div style="background:#0B0B0B; padding:40px 20px; font-family:system-ui, sans-serif;">
-        
-        <div style="
-          max-width:600px;
-          margin:auto;
-          background:#111;
-          border:1px solid rgba(255,255,255,0.08);
-          border-radius:16px;
-          padding:32px;
-          color:#fff;
-        ">
+  <div style="font-family: system-ui, sans-serif; max-width:600px; margin:auto; padding:32px; color:#111; background:#fff; border-radius:12px;">
 
-          <h2 style="font-size:24px; margin-bottom:10px;">You’re in.</h2>
+    <h2 style="margin-bottom:12px;">You’re in.</h2>
 
-          <p style="color:rgba(255,255,255,0.7);">
-            It’s official — you’ve secured your spot in the 
-            <strong style="color:#fff;">IMFC AI Premium pre-sale</strong>.
-          </p>
+    <p>
+      Your spot in the <strong>IMFC AI Premium pre-sale</strong> is confirmed.
+    </p>
 
-          <p style="color:rgba(255,255,255,0.7);">
-            While most designers are still dealing with awkward, unusable AI outputs,
-            you’re about to unlock a <strong style="color:#fff;">vault of clean, high-quality, designer-grade assets</strong>.
-          </p>
+    <p>
+      You’ll get access to your full package on <strong>${launchDate}</strong>.
+    </p>
 
-          <h3 style="margin-top:28px; font-size:18px;">What happens next?</h3>
+    <p>
+      In the meantime, here’s your free guide:
+    </p>
 
-          <p style="color:rgba(255,255,255,0.7);">
-            We’re putting the final touches on the collection.
-          </p>
+    <p style="margin:20px 0;">
+      <a href="${guideLink}" style="color:#000; font-weight:600;">
+        ${guideLink}
+      </a>
+    </p>
 
-          <div style="margin:30px 0;">
-            <a href="${guideLink}"
-            target="_blank" style="
-              display:inline-block;
-              padding:14px 22px;
-              background:#FF6A00;
-              color:#000;
-              text-decoration:none;
-              border-radius:8px;
-              font-weight:600;
-            ">
-              Access your AI Mastering Guide →
-            </a>
+    <p>
+      This will help you get better results immediately while we finalize everything.
+    </p>
 
-            <p style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;">
-              Trouble clicking? Copy and paste this link:<br/>
-              ${guideLink}
-            </p>
-          </div>
+    <p style="margin-top:24px;">
+      If you have any questions, just reply to this email.
+    </p>
 
-          <p style="color:rgba(255,255,255,0.7);">
-            We included your <strong style="color:#fff;">Free AI Mastering Guide</strong> so you can start improving your outputs immediately.
-          </p>
+    <p style="margin-top:32px;">
+      — IMFC Team
+    </p>
 
-          <p style="color:rgba(255,255,255,0.7); margin-top:20px;">
-            By the time your assets arrive, you won’t just have better visuals —
-            you’ll know exactly how to use them.
-          </p>
+    <hr style="margin:32px 0; border:none; border-top:1px solid #eee;" />
 
-          <p style="margin-top:32px; color:#fff;">
-            — IMFC Team
-          </p>
+    <p style="font-size:12px; color:#666;">
+      Reference: ${reference}
+    </p>
 
-          <hr style="margin:40px 0; border:none; border-top:1px solid rgba(255,255,255,0.08);" />
-
-          <p style="font-size:12px; color:rgba(255,255,255,0.4);">
-            Reference: ${reference}
-          </p>
-
-        </div>
-      </div>
-    `,
+  </div>
+`,
   });
 }
